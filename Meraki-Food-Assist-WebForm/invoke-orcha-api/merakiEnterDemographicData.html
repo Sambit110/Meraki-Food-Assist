@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Meraki Food Assist</title>
+    <script src="CallOrchaAPI.js"></script>
+</head>
+<body>
+            <h1>Meraki Food Assist</h1>
+   
+        <div>
+            <label for="Name">Name &nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="txtName" type="text" name="Name" value="" />
+        </div>
+
+        <br />
+
+        <div>
+            <label for="Age">Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input id="txtAge" type="number" name="Age" value="" />
+        </div>
+
+        <br />
+
+        <div>
+            <label for="Height">Height &nbsp;&nbsp;&nbsp;</label>
+            <input id="txtHeight" type="text" name="Height" value="" /> inches (1 feet=12 inches)
+        </div>
+
+        <br />
+
+        <div>
+            <label for="Weight">Weight &nbsp;&nbsp;</label>
+            <input id="txtWeight" type="text" name="Weight" value="" /> kg
+        </div>
+
+        <br />
+
+        <div>
+            <label for="Sex">
+                Sex &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <select name="ctl00$ContentPlaceHolder1$DDSex" id="ddlSex">
+                    <option selected="selected" value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </label>
+        </div>
+
+        <br />
+
+        <div>
+            <label for="Lifestyle">Lifestyle</label>
+            <select name="ctl00$ContentPlaceHolder1$DDLifestyle" id="ddlLifestyle">
+                <option selected="selected" value="Sedentary. Little or No Exercise">Sedentary. Little or No Exercise</option>
+                <option value="Light Exercise 1-3 days per week">Light Exercise 1-3 days per week. Desk job.</option>
+                <option value="Exercise 3-5 days per week.">Active, on your feet. Exercise 3-5 days per week. </option>
+                <option value="Sports, Exercise 6-7 days per week.">Very Active. Sports, Exercise 6-7 days per week.</option>
+            </select>
+        </div>
+
+        <br />
+
+        <div id="Allergen">
+            <label for="Allergen">Allergen</label>
+            <input id="txtAllergen" type="text" name="Allergen" value="" /> (optional)
+        </div>
+
+        <br />
+
+        <button onclick="getOrchaToken()">Start Meal Assist</button>
+
+        <div id="nutritionResultId"></div>
+
+</body>
+</html>

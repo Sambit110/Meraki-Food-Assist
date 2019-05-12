@@ -1,0 +1,104 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Meraki_Food_Assist_ShowBMICategoryResult"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_BMI" Type="InArgument(x:String)" />
+    <x:Property Name="in_BMICategory" Type="InArgument(x:String)" />
+    <x:Property Name="in_CalorieNeeds" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Meraki_Food_Assist_ShowBMICategoryResult_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="This will add BMI category result to UI screen for the user" DisplayName="Meraki Food Assist_ShowBMICategoryResult" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <ui:InjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script - Show BMI Value" sap2010:WorkflowViewState.IdRef="InjectJsScript_1" InputParameter="[&quot;Your BMI value is &quot;+in_BMI.ToString]" ScriptCode="show_BMIResult.js">
+      <ui:InjectJsScript.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="d6f59ced18f8ac86f64046a1276c411f" Selector="&lt;html title='Meraki Food Assist' /&gt;&lt;webctrl tag='BODY' /&gt;" WaitForReady="COMPLETE" />
+      </ui:InjectJsScript.Target>
+    </ui:InjectJsScript>
+    <ui:InjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script - Show BMI Category" sap2010:WorkflowViewState.IdRef="InjectJsScript_2" InputParameter="[&quot;You fall under &quot;+in_BMICategory.ToString+&quot; category&quot;]" ScriptCode="show_BMIResult.js">
+      <ui:InjectJsScript.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="d6f59ced18f8ac86f64046a1276c411f" Selector="&lt;html title='Meraki Food Assist' /&gt;&lt;webctrl tag='BODY' /&gt;" WaitForReady="COMPLETE" />
+      </ui:InjectJsScript.Target>
+    </ui:InjectJsScript>
+    <ui:InjectJsScript ScriptOutput="{x:Null}" DisplayName="Inject Js Script - Show Calorie Value" sap2010:WorkflowViewState.IdRef="InjectJsScript_3" InputParameter="[&quot;Your daily calorie consumption is &quot;+in_CalorieNeeds.ToString]" ScriptCode="show_BMIResult.js">
+      <ui:InjectJsScript.Target>
+        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="d6f59ced18f8ac86f64046a1276c411f" Selector="&lt;html title='Meraki Food Assist' /&gt;&lt;webctrl tag='BODY' /&gt;" WaitForReady="COMPLETE" />
+      </ui:InjectJsScript.Target>
+    </ui:InjectJsScript>
+    <sads:DebugSymbol.Symbol>d2BDOlxVc2Vyc1xzamVuYVxEb2N1bWVudHNcVWlQYXRoXE1lcmFraS1Gb29kLUFzc2lzdFxNZXJha2kgRm9vZCBBc3Npc3RfU2hvd0JNSUNhdGVnb3J5UmVzdWx0LnhhbWwNRgNXDgIBAUcFSxkCAQxMBVAZAgEHUQVVGQIBAkmYAUnfAQIBEEfgAUfzAQIBD0eiAUfUAQIBDU6YAU7fAQIBC0z+AUyRAgIBCkylAUzyAQIBCFOYAVPfAQIBBlH9AVGQAgIBBVGmAVHxAQIBAw==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InjectJsScript_1" sap:VirtualizedContainerService.HintSize="314.4,135.2" />
+      <sap2010:ViewStateData Id="InjectJsScript_2" sap:VirtualizedContainerService.HintSize="314.4,135.2" />
+      <sap2010:ViewStateData Id="InjectJsScript_3" sap:VirtualizedContainerService.HintSize="314.4,135.2" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="336.8,654.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Meraki_Food_Assist_ShowBMICategoryResult_1" sap:VirtualizedContainerService.HintSize="376.8,774.4" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

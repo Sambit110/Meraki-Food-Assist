@@ -1,0 +1,168 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="Main_1"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Meraki Food Assist" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strUserName" />
+      <Variable x:TypeArguments="x:String" Name="strAge" />
+      <Variable x:TypeArguments="x:String" Name="strHeight" />
+      <Variable x:TypeArguments="x:String" Name="strWeight" />
+      <Variable x:TypeArguments="x:String" Name="strGender" />
+      <Variable x:TypeArguments="x:String" Name="strLifestyle" />
+      <Variable x:TypeArguments="x:String" Name="strBMI" />
+      <Variable x:TypeArguments="x:String" Name="strCalorie" />
+      <Variable x:TypeArguments="x:String" Name="strBMICategory" />
+      <Variable x:TypeArguments="x:String" Name="strCarbohydrate" />
+      <Variable x:TypeArguments="x:String" Name="strFats" />
+      <Variable x:TypeArguments="x:String" Name="strProtien" />
+      <Variable x:TypeArguments="x:String" Name="strBreakfastItem" />
+      <Variable x:TypeArguments="x:String" Name="strLunchItem" />
+      <Variable x:TypeArguments="x:String" Name="strDinnerItem" />
+      <Variable x:TypeArguments="x:String" Name="strAllergen" />
+    </Sequence.Variables>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Get User Demographics" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Meraki Food Assist_GetUserDetails.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Name">[strUserName]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Age">[strAge]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Height">[strHeight]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Weight">[strWeight]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Gender">[strGender]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Lifestyle">[strLifestyle]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Allergen">[strAllergen]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Fill info to get user RDA" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Meraki Food Assist_FillUserInfoForBMI.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Weight">[strWeight]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Height">[strHeight]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Lifestyle">[strLifestyle]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Gender">[strGender]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Age">[strAge]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Get BMI &amp; Calorie for User" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Meraki Food Assist_GetBMI&amp;Calorie.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_BMI">[strBMI]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Calorie">[strCalorie]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_BMICategory">[strBMICategory]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Carbohydrate">[strCarbohydrate]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Fats">[strFats]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_Protien">[strProtien]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="VoiceOver BMI Category" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Meraki Food Assist_BotSpeaksBMI.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_BMICategory">[strBMICategory]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Show user BMI Category" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Meraki Food Assist_ShowBMICategoryResult.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_BMI">[strBMI]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_BMICategory">[strBMICategory]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CalorieNeeds">[strCalorie]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Create User's Food Plan" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Meraki Food Assist_CreateFoodPlan.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Fats">[strFats]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Carbs">[strCarbohydrate]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Proteins">[strProtien]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_BreakfastItems">[strBreakfastItem]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_LunchItems">[strLunchItem]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_DinnerItems">[strDinnerItem]</OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_AllergicFoodItem">[strAllergen]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Voiceover for Meal" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Meraki Food Assist_VoiceBot.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_speech">Please find your meal plan from Meraki</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Show Meal Plan" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Meraki Food Assist_ShowMealPlan.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_breakfastItem">[strBreakfastItem]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_lunchItem">[strLunchItem]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_dinerItem">[strDinnerItem]</InArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <sads:DebugSymbol.Symbol>dzxDOlxVc2Vyc1xzamVuYVxEb2N1bWVudHNcVWlQYXRoXE1lcmFraS1Gb29kLUFzc2lzdFxNYWluLnhhbWwyPgOTAQ4CAQFRBVsdAgFDXAVkHQIBN2UFbh0CASlvBXMdAgEldAV6HQIBHXsFhQEdAgENhgEFigEdAgEKiwEFkQEdAgECWEdYVQIBUVlGWVMCAU9XRFdPAgFNVURVTwIBS1ZEVk8CAUlTQlNPAgFHVEFUSQIBRVGyAVHaAQIBRGBFYFMCAUFeQl5NAgE/X0JfTQIBPWI/YkcCATthQmFNAgE5XLYBXOIBAgE4a0JrSwIBNWdBZ0kCATNqSmpbAgExaEVoUQIBL2lJaVkCAS1luwFl5wECASxsRWxRAgEqcUdxVwIBJ2+zAW/ZAQIBJnY/dkcCASN3R3dXAgEheEh4VAIBH3SzAXTiAQIBHn9Ef1ACARuAAUyAAV4CARl9QH1JAgEXgwFMgwFZAgEVfkF+UgIBE4IBSYIBWAIBEYEBSIEBVgIBD3u0AXvcAQIBDogBQogBaAIBDIYBrwGGAdEBAgELjgFFjgFTAgEIjQFJjQFbAgEGjwFFjwFUAgEEiwGrAYsB0QECAQM=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_1" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_2" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_3" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_7" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_5" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_4" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_8" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="InvokeWorkflowFile_6" sap:VirtualizedContainerService.HintSize="314.4,88" />
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="336.8,1108.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Main_1" sap:VirtualizedContainerService.HintSize="376.8,1228.8" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

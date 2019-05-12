@@ -1,0 +1,469 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="Meraki_Food_Assist_GetBMI_Calorie"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:ui="http://schemas.uipath.com/workflow/activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_BMI" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Calorie" Type="OutArgument(x:String)" />
+    <x:Property Name="out_BMICategory" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Carbohydrate" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Fats" Type="OutArgument(x:String)" />
+    <x:Property Name="out_Protien" Type="OutArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>Meraki_Food_Assist_GetBMI_Calorie_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Plugin.Workflow</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Meraki Food Assist_GetBMI&amp;Calorie" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="strBMIAttribute" />
+    </Sequence.Variables>
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" sap2010:Annotation.AnnotationText="This module will get BMI results along with RDA (carbohydrate, fats &amp; protiens) required for that age group" BrowserType="Chrome" DisplayName="Chrome Browser -  My BMI Calculater" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="1c20d4a6bb8fe7466092a07e9421d121" Selector="&lt;html app='chrome.exe' title='The Right Trak Calculates Your BMI and Your RDAs and then Lets Y*' /&gt;">
+      <ui:BrowserScope.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get BMI Score" sap2010:WorkflowViewState.IdRef="GetValue_1">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="edd57ee19128214245dc506f7939c580" Selector="&lt;webctrl tag='INPUT' aaname='*label: My BMI Score*' /&gt;" WaitForReady="COMPLETE" />
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[out_BMI]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Daily Calorie" sap2010:WorkflowViewState.IdRef="GetValue_2">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="383600caa935775c6dbbbdef7807a907" Selector="&lt;webctrl tag='INPUT' aaname='*label: Your Daily Calorie Needs*' /&gt;" WaitForReady="COMPLETE" />
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[out_Calorie]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[{&quot;Below&quot;,&quot;18&quot;,&quot;25&quot;,&quot;30&quot;,&quot;35&quot;,&quot;40&quot;}]">
+              <ui:ForEach.Body>
+                <ActivityAction x:TypeArguments="x:String">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="outerHtml" DisplayName="Get Attribute - BMI Score" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                      <ui:GetAttribute.Result>
+                        <OutArgument x:TypeArguments="x:String">[strBMIAttribute]</OutArgument>
+                      </ui:GetAttribute.Result>
+                      <ui:GetAttribute.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="7b0e63a1565efe65e6908ab64612516b" Selector="[&quot;&lt;webctrl tag='SELECT' aaname='*label: My BMI Score*' /&gt;&lt;webctrl aaname='&quot;+item.ToString+&quot;*' tag='OPTION' /&gt;&quot;]" WaitForReady="COMPLETE" />
+                      </ui:GetAttribute.Target>
+                    </ui:GetAttribute>
+                    <If Condition="[strBMIAttribute.ToLower.Contains(&quot;selected&quot;)]" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If.Then>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <ui:Break sap2010:WorkflowViewState.IdRef="Break_1" />
+                        </Sequence>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEach.Body>
+            </ui:ForEach>
+            <Flowchart DisplayName="Get BMI Category" sap2010:WorkflowViewState.IdRef="Flowchart_1" StartNode="{x:Reference __ReferenceID10}">
+              <FlowDecision x:Name="__ReferenceID3" Condition="[strBMIAttribute.ToLower.Contains(&quot;normal&quot;)]" DisplayName="Normal?" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                <FlowDecision.True>
+                  <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                    <Assign DisplayName="BMICategory = Normal" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[out_BMICategory]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">Normal</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </FlowStep>
+                </FlowDecision.True>
+                <FlowDecision.False>
+                  <FlowDecision x:Name="__ReferenceID0" Condition="[strBMIAttribute.ToLower.Contains(&quot;overweight&quot;)]" DisplayName="Overweight?" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                    <FlowDecision.True>
+                      <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                        <Assign DisplayName="BMICategory = Overweight" sap2010:WorkflowViewState.IdRef="Assign_3">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[out_BMICategory]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Overweight</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </FlowStep>
+                    </FlowDecision.True>
+                    <FlowDecision.False>
+                      <FlowDecision x:Name="__ReferenceID1" Condition="[strBMIAttribute.ToLower.Contains(&quot;obese(class 1)&quot;)]" DisplayName="Obese Class 1?" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                        <FlowDecision.True>
+                          <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                            <Assign DisplayName="BMICategory = Obese Class1" sap2010:WorkflowViewState.IdRef="Assign_4">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[out_BMICategory]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">Obese Class1</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </FlowStep>
+                        </FlowDecision.True>
+                        <FlowDecision.False>
+                          <FlowDecision x:Name="__ReferenceID2" Condition="[strBMIAttribute.ToLower.Contains(&quot;obese(class 2)&quot;)]" DisplayName="Obese class 2?" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                            <FlowDecision.True>
+                              <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                                <Assign DisplayName="BMICategory = Obese Class2" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[out_BMICategory]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">Obese Class2</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </FlowStep>
+                            </FlowDecision.True>
+                            <FlowDecision.False>
+                              <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                                <Assign DisplayName="BMICategory = Morbid Obesity" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">[out_BMICategory]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">Morbid Obesity</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </FlowStep>
+                            </FlowDecision.False>
+                          </FlowDecision>
+                        </FlowDecision.False>
+                      </FlowDecision>
+                    </FlowDecision.False>
+                  </FlowDecision>
+                </FlowDecision.False>
+              </FlowDecision>
+              <x:Reference>__ReferenceID0</x:Reference>
+              <x:Reference>__ReferenceID1</x:Reference>
+              <x:Reference>__ReferenceID2</x:Reference>
+              <FlowDecision x:Name="__ReferenceID10" Condition="[strBMIAttribute.ToLower.Contains(&quot;underweight&quot;)]" DisplayName="Underweight?" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
+                <FlowDecision.True>
+                  <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                    <Assign DisplayName="BMICategory = Underweight" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[out_BMICategory]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">Underweight</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </FlowStep>
+                </FlowDecision.True>
+                <FlowDecision.False>
+                  <x:Reference>__ReferenceID3</x:Reference>
+                </FlowDecision.False>
+              </FlowDecision>
+              <x:Reference>__ReferenceID4</x:Reference>
+              <x:Reference>__ReferenceID5</x:Reference>
+              <x:Reference>__ReferenceID6</x:Reference>
+              <x:Reference>__ReferenceID7</x:Reference>
+              <x:Reference>__ReferenceID8</x:Reference>
+              <x:Reference>__ReferenceID9</x:Reference>
+            </Flowchart>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Carbohydrate" sap2010:WorkflowViewState.IdRef="GetValue_3">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="da6b796436061db9b0ed7ed8ae59cd1f" Selector="&lt;webctrl id='ctl00_ContentPlaceHolder1_txtCarbsMin' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[out_Carbohydrate]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Fats" sap2010:WorkflowViewState.IdRef="GetValue_4">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="d82849fa2dfa89f0dcba1836e4151305" Selector="&lt;webctrl id='ctl00_ContentPlaceHolder1_txtTotFatUL' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[out_Fats]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Protiens" sap2010:WorkflowViewState.IdRef="GetValue_5">
+              <ui:GetValue.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="43f25c93ac8309f81752f57e3a54e8b9" Selector="&lt;webctrl id='ctl00_ContentPlaceHolder1_txtProteinMin' tag='INPUT' /&gt;" WaitForReady="COMPLETE" />
+              </ui:GetValue.Target>
+              <ui:GetValue.Value>
+                <OutArgument x:TypeArguments="x:String">[out_Protien]</OutArgument>
+              </ui:GetValue.Value>
+            </ui:GetValue>
+            <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+          </Sequence>
+        </ActivityAction>
+      </ui:BrowserScope.Body>
+    </ui:BrowserScope>
+    <sads:DebugSymbol.Symbol>d1dDOlxVc2Vyc1xzamVuYVxEb2N1bWVudHNcVWlQYXRoXFVpUGF0aF9IYWNrYXRob25cTWVyYWtpIEZvb2QgQXNzaXN0X0dldEJNSSZDYWxvcmllLnhhbWw3TAOFAg4CAQFQBYMCFwIBAlC4A1CjBAIBSlYLgAIWAgEDVw1eGwIBRl8NZhsCAUJnDYABGgIBNIEBDeYBGQIBEecBDe4BGwIBDe8BDfYBGwIBCfcBDf4BGwIBBf8BDf8BdAIBBFw5XEICAUdZoAFZ3gECAUlkOWRGAgFDYaABYeoBAgFFZ5gBZ/oBAgFBbRN9HgIBNc8BQM8BfQIBMoIBP4IBdwIBMJABQ5ABfwIBLp4BR54BhwECASysAUusAYsBAgEquwEhwgEqAgEmrwEhtgEqAgEioQEdqAEmAgEekwEZmgEiAgEahQEVjAEeAgEW0gEV2QEeAgES7AE57AFLAgEO6QGgAekB6gECARD0ATn0AUMCAQrxAaAB8QHqAQIBDPwBOfwBRgIBBvkBoAH5AewBAgEIbhV1JwIBO3YVfBoCATbAAUzAAVoCASm9AU29AV4CASe0AUy0AVgCASWxAU2xAV4CASOmAUimAVQCASGjAUmjAVoCAR+YAUSYAU4CAR2VAUWVAVYCARuKAUCKAUYCARmHAUGHAVICARfXAUDXAUsCARXUAUHUAVICARNuS25WAgE+cEFwUgIBPHOoAXO5AgIBP3Yjdl0CATd4GXokAgE5eRt5UQIBOg==</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="GetValue_1" sap:VirtualizedContainerService.HintSize="502.4,107.2" />
+      <sap2010:ViewStateData Id="GetValue_2" sap:VirtualizedContainerService.HintSize="502.4,107.2" />
+      <sap2010:ViewStateData Id="GetAttribute_1" sap:VirtualizedContainerService.HintSize="464,135.2" />
+      <sap2010:ViewStateData Id="Break_1" sap:VirtualizedContainerService.HintSize="200,22.4" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="222.4,147.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,296.8" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="486.4,596.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_2" sap:VirtualizedContainerService.HintSize="502.4,731.2" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="243.2,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">238.4,320</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,60</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="243.2,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">408.4,430</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,60</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="243.2,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">558.4,540</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,60</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="243.2,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">698.895,650</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,60</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_6" sap:VirtualizedContainerService.HintSize="243.2,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">1018.4,650</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,60</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_4" sap:VirtualizedContainerService.HintSize="82.4,87.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">888.8,546.4</av:Point>
+            <av:Size x:Key="ShapeSize">82.4,87.2</av:Size>
+            <av:PointCollection x:Key="TrueConnector">888.8,590 820.495,590 820.495,650</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">971.2,590 1140,590 1140,650</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_1" sap:VirtualizedContainerService.HintSize="84,87.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">768,416.4</av:Point>
+            <av:Size x:Key="ShapeSize">84,87.2</av:Size>
+            <av:PointCollection x:Key="FalseConnector">852,460 930,460 930,546.4</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">768,460 680,460 680,540</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_2" sap:VirtualizedContainerService.HintSize="72,87.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">630.4,306.4</av:Point>
+            <av:Size x:Key="ShapeSize">72,87.2</av:Size>
+            <av:PointCollection x:Key="FalseConnector">702.4,350 810,350 810,416.4</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">630.4,350 530,350 530,430</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_3" sap:VirtualizedContainerService.HintSize="70.4,87.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">520.641666666667,207.7</av:Point>
+            <av:Size x:Key="ShapeSize">70.4,87.2</av:Size>
+            <av:PointCollection x:Key="FalseConnector">591.041666666667,251.3 666.4,251.3 666.4,306.4</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">520.641666666667,251.3 360,251.3 360,320</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="243.2,60">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">38.4,130</av:Point>
+            <av:Size x:Key="ShapeSize">243.2,60</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_5" sap:VirtualizedContainerService.HintSize="79.2,87.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">430.4,116.4</av:Point>
+            <av:Size x:Key="ShapeSize">79.2,87.2</av:Size>
+            <av:PointCollection x:Key="FalseConnector">509.6,160 555.841666666667,160 555.841666666667,207.7</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">430.4,160 281.6,160</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="502.4,52.8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">440,2.4</av:Point>
+            <av:Size x:Key="ShapeSize">60,75.2</av:Size>
+            <x:Double x:Key="Height">790.8</x:Double>
+            <av:PointCollection x:Key="ConnectorLocation">470,77.6 470,116.4</av:PointCollection>
+            <x:Double x:Key="Width">1273.2</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="GetValue_3" sap:VirtualizedContainerService.HintSize="502.4,107.2" />
+      <sap2010:ViewStateData Id="GetValue_4" sap:VirtualizedContainerService.HintSize="502.4,107.2" />
+      <sap2010:ViewStateData Id="GetValue_5" sap:VirtualizedContainerService.HintSize="502.4,107.2" />
+      <sap2010:ViewStateData Id="CloseTab_1" sap:VirtualizedContainerService.HintSize="502.4,22.4" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="524.8,1747.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="BrowserScope_1" sap:VirtualizedContainerService.HintSize="539.2,1938.4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="561.6,2063.2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Meraki_Food_Assist_GetBMI_Calorie_1" sap:VirtualizedContainerService.HintSize="601.6,2143.2" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>
